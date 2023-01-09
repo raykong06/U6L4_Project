@@ -1,6 +1,7 @@
 public class NumberConverter {
     int[] digits;
     int base;
+    String[] baseReference;
 
     public NumberConverter(int number, int base) {
         String numberAsString = Integer.toString(number);
@@ -11,6 +12,14 @@ public class NumberConverter {
             digits[i] = d;
         }
         this.base = base;
+
+        baseReference = new String[64];
+        String digitMap = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/";
+        for (int i = 0; i < 64; i++)
+        {
+            String single = digitMap.substring(i, i + 1);
+            baseReference[i] = single;
+        }
     }
 
     public String displayOriginalNumber() {
@@ -26,12 +35,17 @@ public class NumberConverter {
         return digits;
     }
 
+    public String[] getBaseReference(){
+        return baseReference;
+    }
+
     public int[] convertToDecimal() {
 
         return null;
     }
 
     public int[] convertToBinary() {
+
         return null;
     }
 
