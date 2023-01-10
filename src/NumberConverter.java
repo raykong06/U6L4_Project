@@ -27,7 +27,7 @@ public class NumberConverter {
         for (int i = 0; i < digits.length; i++) {
             o = o + digits[i];
         }
-        o = o + "\n";
+        //o = o + "\n";
         return o;
     }
 
@@ -45,8 +45,24 @@ public class NumberConverter {
     }
 
     public int[] convertToBinary() {
+        String converted = "";
+        int number = Integer.parseInt(displayOriginalNumber());
+        int quotient = number;
 
-        return null;
+        while (quotient >= number)
+        {
+            quotient = number / 2;
+            converted = (number - quotient * 2) + converted;
+        }
+        converted = (number - quotient * 2) + converted;
+        int[] binary = new int[converted.length()];
+
+        for (int i = 0; i < converted.length(); i++)
+        {
+            binary[i] = Integer.parseInt(converted.substring(i, i + 1));
+        }
+
+        return binary;
     }
 
     public int[] convertToOctal() {
