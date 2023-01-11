@@ -48,13 +48,15 @@ public class NumberConverter {
         String converted = "";
         int number = Integer.parseInt(displayOriginalNumber());
         int quotient = number;
+        int subtractNumber;
 
-        while (quotient >= number)
+        while (quotient >= 2)
         {
-            quotient = number / 2;
-            converted = (number - quotient * 2) + converted;
+            subtractNumber = quotient;
+            quotient = quotient / 2;
+            converted = (subtractNumber - (quotient * 2)) + converted;
         }
-        converted = (number - quotient * 2) + converted;
+        converted = quotient + converted;
         int[] binary = new int[converted.length()];
 
         for (int i = 0; i < converted.length(); i++)
@@ -65,7 +67,27 @@ public class NumberConverter {
         return binary;
     }
 
-    public int[] convertToOctal() {
-        return null;
+    public int[] convertToOctal()
+    {
+        String converted = "";
+        int number = Integer.parseInt(displayOriginalNumber());
+        int quotient = number;
+        int subtractNumber;
+
+        while (quotient >= 8)
+        {
+            subtractNumber = quotient;
+            quotient = quotient / 8;
+            converted = (subtractNumber - (quotient * 8)) + converted;
+        }
+        converted = quotient + converted;
+        int[] octal = new int[converted.length()];
+
+        for (int i = 0; i < converted.length(); i++)
+        {
+            octal[i] = Integer.parseInt(converted.substring(i, i + 1));
+        }
+
+        return octal;
     }
 }
